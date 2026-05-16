@@ -1,6 +1,6 @@
 services:
   mysql:
-    image: mysql:8.0
+    build: ./database
     container_name: pm_mysql
     restart: unless-stopped
     environment:
@@ -12,8 +12,6 @@ services:
       - "3306:3306"
     volumes:
       - pm_mysql_data:/var/lib/mysql
-      - ./database/schema.sql:/docker-entrypoint-initdb.d/01_schema.sql
-      - ./database/seed.sql:/docker-entrypoint-initdb.d/02_seed.sql
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
