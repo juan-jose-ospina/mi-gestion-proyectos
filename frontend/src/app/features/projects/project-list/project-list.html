@@ -1,0 +1,43 @@
+<div class="project-list">
+  <div class="header">
+    <h1>Proyectos</h1>
+    <a routerLink="/projects/new" class="btn-primary">+ Nuevo Proyecto</a>
+  </div>
+
+  <div class="loading" *ngIf="loading">Cargando...</div>
+  <div class="error-msg" *ngIf="error">{{ error }}</div>
+
+  <table *ngIf="!loading && projects.length > 0">
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Descripción</th>
+        <th>Estado</th>
+        <th>Fecha límite</th>
+        <th>Creado por</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let project of projects">
+        <td>{{ project.title }}</td>
+        <td>{{ project.description || '—' }}</td>
+        <td>
+          <span class="badge status-{{ project.status }}">
+            {{ getStatusLabel(project.status || '') }}
+          </span>
+        </td>
+        <td>{{ project.due_date ? (project.due_date | date:'dd/MM/yyyy') : '—' }}</td>
+        <td>{{ project.creator_name }}</td>
+        <td class="actions">
+          <button class="btn-edit" (click)="editProject(project.id!)">Editar</button>
+          <button class="btn-delete" (click)="deleteProject(project.id!)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="empty" *ngIf="!loading && projects.length === 0">
+    No hay proyectos registrados.
+  </div>
+</div>

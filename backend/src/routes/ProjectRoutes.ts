@@ -1,12 +1,16 @@
-import { Router } from "express";
-import { getProjects, getProjectById,getMyProjects,createProject,updateProject,deleteProject } from "../controllers/ProjectController";
+import { Router } from 'express';
+import { getProjects, getProjectById, getMyProjects, createProject, updateProject, deleteProject } from '../controllers/ProjectController';
+import { verifyToken, isSuperAdmin } from '../middlewares/authMiddleware';
 
 const router = Router();
 
-router.get('/', getProjects);
-router.get('/my', getMyProjects);
-router.get('/:id', getProjectById);
-router.post('/', createProject);
-router.put('/:id', updateProject);
-router.delete('/:id', deleteProject);
+router.use(verifyToken);
+
+router.get('/my', getMyProjects);           // usuario común
+router.get('/', isSuperAdmin, getProjects); // solo superadmin
+router.get('/:id', isSuperAdmin, getProjectById);
+router.post('/', isSuperAdmin, createProject);
+router.put('/:id', isSuperAdmin, updateProject);
+router.delete('/:id', isSuperAdmin, deleteProject);
+
 export default router;

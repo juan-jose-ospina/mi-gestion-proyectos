@@ -1,12 +1,15 @@
-import { Router} from "express";
-import{ getUsers, getUserById, createUser, updateUser } from "../controllers/UserController";
-import { verifyToken, isSuperAdmin } from "../middlewares/authMiddleware";
+import { Router } from 'express';
+import { getUsers, getUserById, createUser, updateUser, deleteUser } from '../controllers/UserController';
+import { verifyToken, isSuperAdmin } from '../middlewares/authMiddleware';
 
 const router = Router();
 
-router.get('/', verifyToken, getUsers);
-router.get('/:id', verifyToken, getUserById);
-router.post('/', verifyToken, isSuperAdmin, createUser);
-router.put('/:id', verifyToken, isSuperAdmin, updateUser);
+router.use(verifyToken, isSuperAdmin);
+
+router.get('/', getUsers);
+router.get('/:id', getUserById);
+router.post('/', createUser);
+router.put('/:id', updateUser);
+router.delete('/:id', deleteUser);
 
 export default router;

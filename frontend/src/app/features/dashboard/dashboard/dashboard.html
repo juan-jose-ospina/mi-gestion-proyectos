@@ -1,0 +1,32 @@
+<div class="dashboard">
+  <h1>Dashboard</h1>
+
+  <div class="loading" *ngIf="loading">Cargando...</div>
+  <div class="error-msg" *ngIf="error">{{ error }}</div>
+
+  <div class="stats-grid" *ngIf="!loading && !error">
+    <div class="stat-card" *ngFor="let user of stats">
+      <div class="user-info">
+        <h3>{{ user.name }}</h3>
+        <span class="email">{{ user.email }}</span>
+        <span class="badge" [class.active]="user.is_active" [class.inactive]="!user.is_active">
+          {{ user.is_active ? 'Activo' : 'Inactivo' }}
+        </span>
+      </div>
+      <div class="project-stats">
+        <div class="stat">
+          <span class="stat-number">{{ user.total_assigned }}</span>
+          <span class="stat-label">Asignados</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number completed">{{ user.total_completed }}</span>
+          <span class="stat-label">Completados</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number pending">{{ user.total_assigned - user.total_completed }}</span>
+          <span class="stat-label">Pendientes</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

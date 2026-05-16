@@ -1,0 +1,23 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <h2>Iniciar Sesión</h2>
+
+    <div class="error-msg" *ngIf="error">{{ error }}</div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" [(ngModel)]="email" placeholder="correo@ejemplo.com" />
+    </div>
+
+    <div class="form-group">
+      <label>Contraseña</label>
+      <input type="password" [(ngModel)]="password" placeholder="••••••••" />
+    </div>
+
+    <button (click)="login()" [disabled]="loading">
+      {{ loading ? 'Cargando...' : 'Ingresar' }}
+    </button>
+
+    <p class="auth-link">¿No tienes cuenta? <a routerLink="/auth/register">Regístrate</a></p>
+  </div>
+</div>

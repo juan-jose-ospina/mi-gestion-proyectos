@@ -1,0 +1,20 @@
+<nav class="navbar">
+  <div class="navbar-brand">
+    <span routerLink="/dashboard" style="cursor:pointer">Project Management</span>
+  </div>
+
+  <div class="navbar-menu" *ngIf="authService.isLoggedIn()">
+    <ng-container *ngIf="authService.isSuperAdmin()">
+      <a [routerLink]="['/dashboard']">Dashboard</a>
+      <a [routerLink]="['/users']">Usuarios</a>
+      <a [routerLink]="['/projects']">Proyectos</a>
+      <a [routerLink]="['/assignments']">Asignaciones</a>
+    </ng-container>
+
+    <ng-container *ngIf="!authService.isSuperAdmin()">
+      <a [routerLink]="['/projects/my']">Mis Proyectos</a>
+    </ng-container>
+
+    <button (click)="logout()">Cerrar sesión</button>
+  </div>
+</nav>

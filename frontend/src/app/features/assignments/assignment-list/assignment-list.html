@@ -1,0 +1,63 @@
+<div class="assignment-list">
+  <h1>Asignaciones</h1>
+
+  <div class="assign-form">
+    <h2>Asignar Proyecto</h2>
+
+    <div class="error-msg" *ngIf="error">{{ error }}</div>
+    <div class="success-msg" *ngIf="success">{{ success }}</div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Usuario</label>
+        <select [(ngModel)]="selectedUserId">
+          <option [ngValue]="null">Selecciona un usuario</option>
+          <option *ngFor="let user of users" [ngValue]="user.id">{{ user.name }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Proyecto</label>
+        <select [(ngModel)]="selectedProjectId">
+          <option [ngValue]="null">Selecciona un proyecto</option>
+          <option *ngFor="let project of projects" [ngValue]="project.id">{{ project.title }}</option>
+        </select>
+      </div>
+
+      <button (click)="assign()">Asignar</button>
+    </div>
+  </div>
+
+  <div class="loading" *ngIf="loading">Cargando...</div>
+
+  <table *ngIf="!loading && assignments.length > 0">
+    <thead>
+      <tr>
+        <th>Usuario</th>
+        <th>Proyecto</th>
+        <th>Asignado</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let a of assignments">
+        <td>{{ a.user_name }}</td>
+        <td>{{ a.project_title }}</td>
+        <td>{{ a.assigned_at | date:'dd/MM/yyyy' }}</td>
+        <td>
+          <span class="badge" [class.completed]="a.completed" [class.pending]="!a.completed">
+            {{ a.completed ? 'Completado' : 'Pendiente' }}
+          </span>
+        </td>
+        <td>
+          <button class="btn-delete" (click)="deleteAssignment(a.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="empty" *ngIf="!loading && assignments.length === 0">
+    No hay asignaciones registradas.
+  </div>
+</div>

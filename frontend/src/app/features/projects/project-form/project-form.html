@@ -1,0 +1,40 @@
+<div class="project-form">
+  <div class="header">
+    <h1>{{ isEditing ? 'Editar Proyecto' : 'Nuevo Proyecto' }}</h1>
+    <a routerLink="/projects" class="btn-back">← Volver</a>
+  </div>
+
+  <div class="form-card">
+    <div class="error-msg" *ngIf="error">{{ error }}</div>
+    <div class="success-msg" *ngIf="success">{{ success }}</div>
+
+    <div class="form-group">
+      <label>Título</label>
+      <input type="text" [(ngModel)]="project.title" placeholder="Título del proyecto" />
+    </div>
+
+    <div class="form-group">
+      <label>Descripción</label>
+      <textarea [(ngModel)]="project.description" placeholder="Descripción del proyecto" rows="4"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Estado</label>
+      <select [(ngModel)]="project.status">
+        <option value="pending">Pendiente</option>
+        <option value="in_progress">En Progreso</option>
+        <option value="completed">Completado</option>
+        <option value="cancelled">Cancelado</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Fecha límite</label>
+      <input type="date" [(ngModel)]="project.due_date" />
+    </div>
+
+    <button (click)="save()" [disabled]="loading">
+      {{ loading ? 'Guardando...' : (isEditing ? 'Actualizar' : 'Crear Proyecto') }}
+    </button>
+  </div>
+</div>

@@ -1,0 +1,96 @@
+.dashboard {
+  h1 {
+    color: #cdd6f4;
+    margin-bottom: 2rem;
+  }
+
+  .loading {
+    color: #a6adc8;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .error-msg {
+    background: #f38ba8;
+    color: #1e1e2e;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+
+    .stat-card {
+      background: #1e1e2e;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+
+      .user-info {
+        margin-bottom: 1.2rem;
+
+        h3 {
+          color: #cdd6f4;
+          margin: 0 0 0.3rem;
+        }
+
+        .email {
+          color: #a6adc8;
+          font-size: 0.85rem;
+          display: block;
+          margin-bottom: 0.5rem;
+        }
+
+        .badge {
+          font-size: 0.75rem;
+          padding: 0.2rem 0.6rem;
+          border-radius: 20px;
+          font-weight: bold;
+
+          &.active {
+            background: #a6e3a1;
+            color: #1e1e2e;
+          }
+
+          &.inactive {
+            background: #f38ba8;
+            color: #1e1e2e;
+          }
+        }
+      }
+
+      .project-stats {
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid #313244;
+        padding-top: 1rem;
+
+        .stat {
+          text-align: center;
+
+          .stat-number {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #cdd6f4;
+
+            &.completed {
+              color: #a6e3a1;
+            }
+
+            &.pending {
+              color: #fab387;
+            }
+          }
+
+          .stat-label {
+            font-size: 0.75rem;
+            color: #a6adc8;
+          }
+        }
+      }
+    }
+  }
+}

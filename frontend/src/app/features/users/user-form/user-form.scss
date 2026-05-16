@@ -1,0 +1,86 @@
+.user-form {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    h1 { color: #cdd6f4; }
+
+    .btn-back {
+      color: #a6adc8;
+      text-decoration: none;
+      font-size: 0.9rem;
+
+      &:hover { color: #cdd6f4; }
+    }
+  }
+
+  .form-card {
+    background: #1e1e2e;
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 500px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+
+    .error-msg {
+      background: #f38ba8;
+      color: #1e1e2e;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .success-msg {
+      background: #a6e3a1;
+      color: #1e1e2e;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+
+      label {
+        display: block;
+        color: #a6adc8;
+        margin-bottom: 0.4rem;
+        font-size: 0.9rem;
+      }
+
+      input, select {
+        width: 100%;
+        padding: 0.65rem 1rem;
+        border-radius: 8px;
+        border: 1px solid #313244;
+        background: #181825;
+        color: #cdd6f4;
+        font-size: 0.95rem;
+        box-sizing: border-box;
+
+        &:focus {
+          outline: none;
+          border-color: #7c3aed;
+        }
+      }
+    }
+
+    button {
+      width: 100%;
+      padding: 0.75rem;
+      background: #7c3aed;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+
+      &:hover:not(:disabled) { background: #6d28d9; }
+      &:disabled { opacity: 0.6; cursor: not-allowed; }
+    }
+  }
+}

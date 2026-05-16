@@ -1,0 +1,46 @@
+<div class="my-projects">
+  <h1>Mis Proyectos</h1>
+
+  <div class="loading" *ngIf="loading">Cargando...</div>
+  <div class="error-msg" *ngIf="error">{{ error }}</div>
+  <div class="success-msg" *ngIf="success">{{ success }}</div>
+
+  <div class="projects-grid" *ngIf="!loading && projects.length > 0">
+    <div class="project-card" *ngFor="let project of projects">
+      <div class="card-header">
+        <h3>{{ project.title }}</h3>
+        <span class="badge status-{{ project.status }}">
+          {{ getStatusLabel(project.status) }}
+        </span>
+      </div>
+
+      <p class="description">{{ project.description || 'Sin descripción' }}</p>
+
+      <div class="card-footer">
+        <div class="dates">
+          <span *ngIf="project.due_date">
+            📅 Vence: {{ project.due_date | date:'dd/MM/yyyy' }}
+          </span>
+          <span *ngIf="project.completed_at" class="completed-at">
+            ✅ Completado: {{ project.completed_at | date:'dd/MM/yyyy' }}
+          </span>
+        </div>
+
+        <button
+          class="btn-complete"
+          *ngIf="!project.completed"
+          (click)="markCompleted(project.id)">
+          Marcar como completado
+        </button>
+
+        <span class="completed-badge" *ngIf="project.completed">
+          ✅ Completado
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="empty" *ngIf="!loading && projects.length === 0">
+    No tienes proyectos asignados aún.
+  </div>
+</div>
