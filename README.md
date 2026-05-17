@@ -24,7 +24,7 @@ Aplicación web para la gestión integral de proyectos. Permite organizar tareas
 ## 🧑‍💻 Equipo de Desarrollo
 
 -   **Backend:** [Juan José Ospina](https://github.com/juan-jose-ospina)
--   **Frontend:** Mateo Cifuentes
+-   **Frontend:**[Mateo Cifuentes
 -   **Base de Datos:** Santiago Quintero
 
 ## 🚀 Cómo Empezar (Usando Docker)
@@ -39,6 +39,6 @@ Sigue estos pasos para levantar el proyecto completo en tu máquina local.
 ### Instalación y Ejecución
 
 1.  **Clona el repositorio:**
-    bash
+    ```bash
     git clone https://github.com/juan-jose-ospina/mi-gestion-proyectos.git
     cd mi-gestion-proyectos
