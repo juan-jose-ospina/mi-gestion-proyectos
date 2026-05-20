@@ -11,7 +11,7 @@ export interface LoginResponse {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private apiUrl = `${environment.apiUrl}/auth`;
+  private apiUrl = `${environment.apiUrl}/api/auth`;
   private currentUserSubject = new BehaviorSubject<any>(this.getUserFromStorage());
 
   currentUser$ = this.currentUserSubject.asObservable();
