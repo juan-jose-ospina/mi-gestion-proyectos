@@ -1,4 +1,4 @@
 export const environment = {
   production: true, 
-  apiUrl: 'http://52.15.72.43:3000'
+  apiUrl: 'https://tiling-decaf-afterlife.ngrok-free.dev'
 };
